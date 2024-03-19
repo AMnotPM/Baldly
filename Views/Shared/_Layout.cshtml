@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/Baldly.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<header class="align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom pe-2 ps-2">
+    <partial name="_NavBar.cshtml"/>
+</header>
+
+<main role="main" class="pb-3">
+    @RenderBody()
+</main>
+<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary text-center">
+    <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+        <span class="mb-3 mb-md-0 text-muted">© 2024 Baldly, Inc</span>
+    </div>
+</footer>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", false)
+</body>
+</html>

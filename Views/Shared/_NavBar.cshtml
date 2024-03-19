@@ -1,0 +1,76 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+<nav class="navbar navbar-light bg-white pe-4 ps-4 sticky-top">
+    <div class="col-md-3 mb-2 mb-md-0">
+        <a class="d-inline-flex link-body-emphasis text-decoration-none navbar-brand" asp-area="" asp-controller="Home"
+           asp-action="Index">
+            Baldly
+        </a>
+    </div>
+
+
+    @if (User.Identity is { IsAuthenticated: true })
+    {
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link text-dark"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark"
+                   asp-area=""
+                   asp-controller="Url"
+                   asp-action="Index">
+                    All links
+                </a>
+            </li>
+            @if (User.IsInRole(Role.Admin))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark"
+                       asp-area=""
+                       asp-controller="Authentication"
+                       asp-action="Users">
+                        Users
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+
+    <div class="col-md-3 text-end">
+        @if (User.Identity is { IsAuthenticated: false })
+        {
+            <a class="btn btn-outline-primary me-2 btn-login"
+               asp-controller="Authentication"
+               asp-action="Login">
+                Log in
+            </a>
+
+            <span id="spaceSpan"></span>
+
+            <a class="btn btn-primary btn-register"
+               asp-controller="Authentication"
+               asp-action="Register">
+                Register
+            </a>
+        }
+        else
+        {
+            <form asp-controller="Authentication" asp-action="Logout">
+                <button class="btn btn-outline-danger my-2 my-sm-0">
+                    <i class="bi bi-box-arrow-in-right"></i> Log out
+                    <b>
+                        @if (User.Identity != null)
+                        {
+                            @User.Identity.Name
+                        }
+                    </b>
+                </button>
+            </form>
+        }
+    </div>
+</nav>

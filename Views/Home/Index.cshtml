@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model PostUrlVm
+
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+@{
+    if (TempData["Message"] != null)
+    {
+        <div class="container">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> @TempData["Message"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    }
+}
+
+<section class="landing py-5">
+    <div class="container-md">
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <img src="~/img/welcome-img.png" class="img-fluid" alt=""/>
+            </div>
+            <div class="col-lg-8">
+                <h1 class="display-4">Baldly: Your shortcut to simplicity.</h1>
+                <p class="lead">
+                    Trim your URLs, boost your reach.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="container-md">
+        <div class="url-shorten-feature">
+            <form class="url-shorten-form form-group" id="url-shorten-form"
+                  asp-controller="Home"
+                  asp-action="ShortenUrl">
+                <div>
+                    <input
+                        asp-for="Url"
+                        type="text"
+                        class="url-input"
+                        placeholder="Shorten a link here..."
+                        autocomplete="off"/>
+
+                    <span asp-validation-for="Url" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-lg order-4 order-md-3" style="">Shorten It!</button>
+            </form>
+            <div class="url-shorten-results"></div>
+        </div>
+    </div>
+</section>
