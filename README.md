@@ -12,8 +12,6 @@ Live preview [`here`](https://baldly.somee.com).
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
-
 Please adhere to this project's `code of conduct`.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
